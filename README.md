@@ -1,26 +1,20 @@
-[![Circle CI](https://circleci.com/gh/Vestorly/ember-cli-emblem/tree/master.svg?style=svg)](https://circleci.com/gh/Vestorly/ember-cli-emblem/tree/master)
-[![Dependency Status](https://david-dm.org/vestorly/ember-cli-emblem.svg?style=flat)](https://david-dm.org/vestorly/ember-cli-emblem)
-[![devDependency Status](https://david-dm.org/vestorly/ember-cli-emblem/dev-status.svg?style=flat)](https://david-dm.org/vestorly/ember-cli-emblem#info=devDependencies)
+[![Travis CI](https://travis-ci.org/fizmo/ember-cli-emblem.svg?branch=master)](https://travis-ci.org/fizmo/ember-cli-emblem)
+[![Dependency Status](https://david-dm.org/fizmo/ember-cli-emblem.svg?style=flat)](https://david-dm.org/vestorly/ember-cli-emblem)
+[![devDependency Status](https://david-dm.org/fizmo/ember-cli-emblem/dev-status.svg?style=flat)](https://david-dm.org/vestorly/ember-cli-emblem#info=devDependencies)
 
 # Ember-cli-emblem
 
 This is an ember-cli addon that brings support for
 [Emblem.js](http://emblemjs.com) templates.
 
-This printer is based on version 0.5.0+ of Emblem. It compiles `.embl`,
+This printer is based on version 0.9.1+ of Emblem. It compiles `.embl`,
 `.emblem` and `.em` templates into Handlebars-syntax templates which
 will then be compiled as standard `.hbs` templates by ember-cli.
 
-Consequently, this addon should be compatible with old versions of Ember
-regardless of its template dependency, and support newer (HTMLBars)
-template compilation in ember-cli.
+## Ember Compatibility
 
-## Supporting Ember 1.9.x projects / Handlebars 2.0
-The emblem dependency jump from 0.5.x to 0.6.x is breaking change for
-projects that use Ember 1.9.x, and through ember-cli:
-[ember-cli-htmlbars 0.6.x](https://github.com/ember-cli/ember-cli-htmlbars#handlebars-20-support)
-Use ember-cli-emblem v0.2.x for Handlebars 2.0 support.
-
+This addon is currently tested with Ember 2.8 LTS, 2.12 LTS, as well
+as the current release, beta, and canary profiles. Other version of 
 
 ## Installation
 
@@ -48,9 +42,3 @@ ENV.emblemOptions {
   blueprints: false
 }
 ```
-
-
-## Ember-CLI support
-
-  * Versions `0.1.x`: supported
-  * Versions `0.2.x`: supported

@@ -1,44 +1,52 @@
 /* jshint node: true */
 'use strict';
 
-var Filter = require('broccoli-filter');
-var checker = require('ember-cli-version-checker');
-var path = require('path');
-var defaults = require('lodash.defaults');
-var assign = require('lodash.assign');
+let Filter = require('broccoli-persistent-filter');
+let VersionChecker = require('ember-cli-version-checker');
+let path = require('path');
+let defaults = require('lodash.defaults');
+let assign = require('lodash.assign');
 
-function TemplateCompiler (inputTree, options) {
-  if (!(this instanceof TemplateCompiler)) {
-    return new TemplateCompiler(inputTree, options);
+class TemplateCompiler extends Filter {
+  constructor(inputTree, _options) {
+    let options = _options || {};
+
+    if (!Object.hasOwnProperty(options, 'persist')) {
+      options.persist = true;
+    }
+
+    super(inputTree, options);
+
+    this.options = options;
+    this.inputTree = inputTree;
+
+    this.compile = this.options.emblemCompiler || require('emblem').default.compile;
+    this.compilerOptions = defaults(options, {
+      quiet: false,
+      debugging: false
+    });
   }
 
-  Filter.call(this, inputTree, options); // this._super()
+  baseDir() {
+    return __dirname;
+  }
 
-  this.options = options || {};
-  this.inputTree = inputTree;
+  processString(string, relativePath) {
+    let options = assign({}, this.compilerOptions, { file: relativePath });
 
-  this.compile = this.options.emblemCompiler || require('emblem').default.compile;
-  this.compilerOptions = defaults(options, {
-    quiet: false,
-    debugging: false
-  });
+    return this.compile(string, options);
+  }
 }
 
-TemplateCompiler.prototype = Object.create(Filter.prototype);
-TemplateCompiler.prototype.constructor = TemplateCompiler;
 TemplateCompiler.prototype.extensions = ['embl', 'emblem', 'em'];
 TemplateCompiler.prototype.targetExtension = 'hbs';
-
-TemplateCompiler.prototype.processString = function (string, relativePath) {
-  var options = assign({}, this.compilerOptions, { file: relativePath });
-
-  return this.compile(string, options);
-}
 
 module.exports = {
   name: 'ember-cli-emblem',
   shouldSetupRegistryInIncluded: function() {
-    return !checker.isAbove(this, '0.2.0');
+    let checker = new VersionChecker(this);
+    let ember = checker.forEmber();
+    return !ember.isAbove('0.2.0');
   },
   getConfig: function() {
     var brocfileConfig = {};
@@ -60,7 +68,7 @@ module.exports = {
       name: 'ember-cli-emblem',
       ext: ['embl', 'emblem', 'em'],
       toTree: function(tree) {
-        return TemplateCompiler(tree, addonContext.getConfig());
+        return new TemplateCompiler(tree, addonContext.getConfig());
       }
     };
     registry.add('template', compiler);
