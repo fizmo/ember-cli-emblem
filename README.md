@@ -1,6 +1,6 @@
 [![Travis CI](https://travis-ci.org/fizmo/ember-cli-emblem.svg?branch=master)](https://travis-ci.org/fizmo/ember-cli-emblem)
-[![Dependency Status](https://david-dm.org/fizmo/ember-cli-emblem.svg?style=flat)](https://david-dm.org/vestorly/ember-cli-emblem)
-[![devDependency Status](https://david-dm.org/fizmo/ember-cli-emblem/dev-status.svg?style=flat)](https://david-dm.org/vestorly/ember-cli-emblem#info=devDependencies)
+[![Dependency Status](https://david-dm.org/fizmo/ember-cli-emblem.svg?style=flat)](https://david-dm.org/fizmo/ember-cli-emblem)
+[![devDependency Status](https://david-dm.org/fizmo/ember-cli-emblem/dev-status.svg?style=flat)](https://david-dm.org/fizmo/ember-cli-emblem#info=devDependencies)
 
 # Ember-cli-emblem
 
