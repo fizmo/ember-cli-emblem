@@ -52,6 +52,6 @@ module.exports = {
   },
 
   locals: function(options) {
-    return ancestralBlueprint('component', this.project).locals(options);
+    return ancestralBlueprint('route', this.project).locals(options);
   }
 };
