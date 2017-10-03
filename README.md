@@ -21,7 +21,7 @@ as the current release, beta, and canary profiles. Other version of
 If you are using the `broccoli-emblem-compiler` it should be removed
 before using this addon: `npm uninstall --save-dev broccoli-emblem-compiler`.
 
-* `ember install ember-cli-emblem`
+* `ember install @fizmo/ember-cli-emblem`
 
 ## Blueprints
 
