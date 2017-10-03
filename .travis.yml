@@ -34,6 +34,7 @@ matrix:
 
 before_install:
   - npm config set spin false
+  - npm update -g npm
   - npm --version
 
 script:
